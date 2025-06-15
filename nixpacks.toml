@@ -1,0 +1,20 @@
+[phases.setup]
+nixLibs = ["zlib"]
+
+[phases.install]
+cmds = [
+  "npm install --no-audit --prefer-offline",
+  "cd api && npm install --no-audit --prefer-offline && cd .."
+]
+
+[phases.build]
+cmds = [
+  "npm run build",
+  "echo 'Build completed successfully!'"
+]
+
+[start]
+cmd = "npm start"
+
+[deploy.env]
+NODE_ENV = "production"
